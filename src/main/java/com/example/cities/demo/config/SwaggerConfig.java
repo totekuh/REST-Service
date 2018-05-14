@@ -26,7 +26,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("**/**").addResourceLocations("classpath:/META-INF/resources/");
     }
 
 
