@@ -15,23 +15,9 @@ public class DataJpaUserRepository implements UserRepository {
         jpaUserRepository = userRepository;
     }
 
-    @Override
-    public User save(User user) {
-        return jpaUserRepository.save(user);
-    }
 
     @Override
-    public User get(int id) {
-        return jpaUserRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return jpaUserRepository.delete(id) != 0;
-    }
-
-    @Override
-    public User getByUserName(String userName) {
-        return jpaUserRepository.findByUserName(userName).orElse(null);
+    public User login(String login, String password) {
+        return jpaUserRepository.login(login, password);
     }
 }

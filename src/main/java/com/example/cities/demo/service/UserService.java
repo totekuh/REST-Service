@@ -1,15 +1,7 @@
 package com.example.cities.demo.service;
 
-import com.example.cities.demo.model.User;
+import com.example.cities.demo.auth.AuthorizedUser;
 
 public interface UserService {
-    User create(User user);
-
-    User update(User user);
-
-    void delete(int id);
-
-    User get(int id);
-
-    User getByUserName(String userName);
+    boolean login(String login, String password);
 }

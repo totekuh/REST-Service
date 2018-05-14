@@ -1,5 +1,7 @@
 package com.example.cities.demo.service;
 
+import com.example.cities.demo.auth.AuthorizedUser;
+import com.example.cities.demo.auth.GeneratedToken;
 import com.example.cities.demo.model.City;
 import com.example.cities.demo.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +26,13 @@ public class CityServiceImpl implements CityService{
         else
             return cities;
     }
+
+    @Override
+    public List<City> getCitiesByEntryAuth(String entry) {
+        if (AuthorizedUser.getToken() != null)
+            return getCitiesByEntry(entry);
+        else
+            return null;
+    }
+
 }

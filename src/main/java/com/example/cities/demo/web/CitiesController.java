@@ -1,12 +1,16 @@
 package com.example.cities.demo.web;
 
+import com.example.cities.demo.auth.NotAuthorizedException;
 import com.example.cities.demo.model.City;
 import com.example.cities.demo.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpStatusCodeException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,10 +26,19 @@ public class CitiesController {
     }
 
     @GetMapping("/cities")
-    public List<City> index(@RequestParam(name = "entry", defaultValue = "") String entry) {
+    public List<City> cities(@RequestParam(name = "entry", defaultValue = "") String entry) {
         if (entry != null && entry.length() > 2)
             return service.getCitiesByEntry(entry);
         else
             return Collections.emptyList();
+    }
+
+    @GetMapping("/citiesAuth")
+    public List<City> citiesAuth(@RequestParam(name = "entry", defaultValue = "") String entry) {
+        List<City> cities = service.getCitiesByEntryAuth(entry);
+        if (cities != null)
+            return cities;
+        else
+            throw new NotAuthorizedException("User is not authorized");
     }
 }

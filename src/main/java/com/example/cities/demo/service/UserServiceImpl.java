@@ -1,6 +1,8 @@
 package com.example.cities.demo.service;
 
+import com.example.cities.demo.auth.AuthorizedUser;
 import com.example.cities.demo.model.User;
+import com.example.cities.demo.auth.GeneratedToken;
 import com.example.cities.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,27 +16,15 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+
     @Override
-    public User create(User user) {
-        return userRepository.save(user);
+    public boolean login(String login, String password) {
+        User user = userRepository.login(login, password);
+        if (user != null) {
+            AuthorizedUser.authorize(user.getId(), GeneratedToken.getToken());
+            return true;
+        }
+        else
+            return false;
     }
-
-    @Override
-    public User update(User user) {
-        return userRepository.save(user);
-    }
-
-    @Override
-    public void delete(int id) {
-        userRepository.delete(id);
-    }
-
-    @Override
-    public User get(int id) {
-        return userRepository.get(id);
-    }
-
-    @Override
-    public User getByUserName(String userName) { return userRepository.getByUserName(userName);}
-
 }
