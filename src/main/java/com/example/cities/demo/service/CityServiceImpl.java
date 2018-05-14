@@ -21,8 +21,8 @@ public class CityServiceImpl implements CityService{
     @Override
     public List<City> getCitiesByEntry(String entry) {
         List<City> cities = cityRepository.getCitiesByEntry(entry);
-        if (cities.size() > 9)
-            return cities.subList(0, 9);
+        if (cities.size() >= 10)
+            return cities.subList(0, 10);
         else
             return cities;
     }

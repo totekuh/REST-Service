@@ -4,7 +4,7 @@ CREATE TABLE PUBLIC.users
   id        integer      not null,
   user_name VARCHAR(80)  not null,
   password  VARCHAR(200) not null,
-  enabled BOOLEAN
+  enabled   BOOLEAN
 );
 
 DROP TABLE IF EXISTS PUBLIC.cities;
@@ -26,4 +26,18 @@ INSERT INTO PUBLIC.cities
   (4, 'Алатырь'),
   (5, 'Александров'),
   (6, 'Александровск'),
-  (7, 'hooita')
+  (7, 'Балабаново'),
+  (8, 'Балаково'),
+  (9, 'Балахна'),
+  (10, 'Балашиха'),
+  (11, 'Балашов'),
+  (12, 'Балабаново'),
+  (13, 'Балаково'),
+  (14, 'Балахна'),
+  (15, 'Балашиха'),
+  (16, 'Балашов'),
+  (17, 'Балабаново'),
+  (18, 'Балаково'),
+  (19, 'Балахна'),
+  (20, 'Балашиха'),
+  (21, 'Балашов')
