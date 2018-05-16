@@ -20,16 +20,11 @@ public class RootController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
     @GetMapping("/")
     public String index() {
         return "You can use cities service without auth by HTTP request (/cities?entry=your_entry)" +
                 "If you want to use cities with auth - " +
-                "Please login into the service by HTTP request (/login?login=user&password=password)";
+                "Please login into the service (login - user, password - password";
     }
 
 }
