@@ -21,11 +21,8 @@ public class RootController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam("login") String login, @RequestParam("password") String password) {
-        if (userService.login(login, password))
-            return "login successful. you can try citiesAuth service by /citiesAuth?entry=your_entry";
-        else
-            return "login failed";
+    public String login() {
+        return "login";
     }
 
     @GetMapping("/")
