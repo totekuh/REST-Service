@@ -29,6 +29,11 @@ public class CitiesController {
         this.service = service;
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "Hello World";
+    }
+
     @GetMapping("/cities")
     public List<City> cities(@RequestParam(name = "entry", defaultValue = "") String entry) {
         if (entry != null && entry.length() > 2)

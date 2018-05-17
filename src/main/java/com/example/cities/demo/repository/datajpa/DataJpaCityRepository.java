@@ -21,7 +21,4 @@ public class DataJpaCityRepository implements CityRepository {
         return jpaCityRepository.findByCityNameStartsWith(entry);
     }
 
-    public List<City> getAll() {
-        return jpaCityRepository.findAll();
-    }
 }

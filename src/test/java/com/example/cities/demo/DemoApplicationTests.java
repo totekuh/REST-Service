@@ -7,9 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import java.util.List;
 
@@ -18,16 +20,9 @@ import java.util.List;
 @Sql(scripts = "classpath:data.sql", config = @SqlConfig(encoding = "UTF-8"))
 public class DemoApplicationTests {
 
-	@Autowired
-	private DataJpaCityRepository repository;
-
-
 	@Test
 	public void contextLoads() {
-		List<City> cities = repository.getAll();
-		System.out.println(cities);
-		List<City> filtered = repository.getCitiesByEntry("Аба");
-		System.out.println(filtered);
+		ConfigurableApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
 	}
 
 }
