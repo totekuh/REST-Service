@@ -24,10 +24,4 @@ public class CityServiceImpl implements CityService{
         else
             return cities;
     }
-
-    @Override
-    public List<City> getCitiesByEntryAuth(String entry) {
-            return null;
-    }
-
 }
