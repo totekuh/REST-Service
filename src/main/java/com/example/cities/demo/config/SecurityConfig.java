@@ -16,14 +16,22 @@ import org.springframework.web.context.request.RequestContextListener;
 
 @Configuration
 @EnableWebSecurity
-//@EnableOAuth2Sso
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private static final String[] AUTH_WHITELIST = {
+            // -- swagger ui
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**"
+    };
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/resources","/cities", "/").permitAll()
+                    .antMatchers(AUTH_WHITELIST).permitAll()
+                    .antMatchers("/cities", "/").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -37,26 +45,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public RequestContextListener requestContextListener() {
         return new RequestContextListener();
     }
-
-//    @Bean
-//    public TokenStore tokenStore() {
-//        return new JwtTokenStore(accessTokenConverter());
-//    }
-//
-//    @Bean
-//    public JwtAccessTokenConverter accessTokenConverter() {
-//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//        converter.setSigningKey("test");
-//        return converter;
-//    }
-//
-//    @Bean
-//    @Primary
-//    public DefaultTokenServices tokenServices() {
-//        DefaultTokenServices tokenServices = new DefaultTokenServices();
-//        tokenServices.setTokenStore(tokenStore());
-//        tokenServices.setSupportRefreshToken(true);
-//        return tokenServices;
-//    }
 
 }
