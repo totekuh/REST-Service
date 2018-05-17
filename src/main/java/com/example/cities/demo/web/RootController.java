@@ -2,6 +2,7 @@ package com.example.cities.demo.web;
 
 import com.example.cities.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,5 +27,11 @@ public class RootController {
                 "If you want to use cities with auth - " +
                 "Please login into the service (login - user, password - password";
     }
+
+//    @RequestMapping("/login")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void login(HttpServletResponse response) {
+//
+//    }
 
 }
